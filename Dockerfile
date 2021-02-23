@@ -37,6 +37,7 @@ RUN /opt/android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "build-tools;30.0.
 RUN /opt/android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "platform-tools"
 RUN /opt/android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "platforms;android-29"
 RUN /opt/android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "system-images;android-29;google_apis;x86_64"
+RUN /opt/android-sdk-linux/cmdline-tools/tools/bin/sdkmanager "--install cmake;3.10.2.4988404"
 
 # ------------------------------------------------------
 # --- Android NDK
@@ -52,14 +53,5 @@ RUN mkdir /opt/android-ndk-tmp && \
 # remove temp directory
     cd ${ANDROID_NDK_HOME} && \
     rm -rf /opt/android-ndk-tmp
-
-# CMake
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.10.2/cmake-3.10.2-Linux-x86_64.sh \
-      -q -O /tmp/cmake-install.sh \
-      && chmod u+x /tmp/cmake-install.sh \
-      && mkdir ${ANDROID_CMAKE_HOME} \
-      && /tmp/cmake-install.sh --skip-license --prefix=${ANDROID_CMAKE_HOME} \
-      && rm /tmp/cmake-install.sh
-ENV PATH "${PATH}:${ANDROID_CMAKE_HOME}"
 
 CMD /opt/tools/entrypoint.sh built-in
