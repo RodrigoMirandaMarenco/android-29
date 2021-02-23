@@ -52,4 +52,14 @@ RUN mkdir /opt/android-ndk-tmp && \
     cd ${ANDROID_NDK_HOME} && \
     rm -rf /opt/android-ndk-tmp
 
+# CMake
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.10.2/cmake-3.10.2-Linux-x86_64.sh \
+      -q -O /tmp/cmake-install.sh \
+      && chmod u+x /tmp/cmake-install.sh \
+      && mkdir /usr/bin/cmake \
+      && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
+      && rm /tmp/cmake-install.sh
+
+ENV PATH="/usr/bin/cmake/bin:${PATH}"
+
 CMD /opt/tools/entrypoint.sh built-in
