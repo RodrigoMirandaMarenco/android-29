@@ -47,7 +47,7 @@ RUN mkdir /opt/android-ndk-tmp && \
     unzip -q android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
 # move to its final location
     mv ./android-ndk-${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} && \
-# remove temp dir
+# remove temp directory
     cd ${ANDROID_NDK_HOME} && \
     rm -rf /opt/android-ndk-tmp
 
