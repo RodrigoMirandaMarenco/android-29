@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV ANDROID_HOME      /opt/android-sdk-linux
 ENV ANDROID_NDK_VERSION r22
 ENV ANDROID_NDK_HOME "${ANDROID_HOME}/ndk"
+ENV ANDROID_CMAKE_HOME "${ANDROID_HOME}/cmake"
 ENV ANDROID_SDK_HOME  ${ANDROID_HOME}
 ENV ANDROID_SDK_ROOT  ${ANDROID_HOME}
 ENV ANDROID_SDK       ${ANDROID_HOME}
@@ -56,10 +57,9 @@ RUN mkdir /opt/android-ndk-tmp && \
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.10.2/cmake-3.10.2-Linux-x86_64.sh \
       -q -O /tmp/cmake-install.sh \
       && chmod u+x /tmp/cmake-install.sh \
-      && mkdir /usr/bin/cmake \
-      && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin/cmake \
+      && mkdir ${ANDROID_CMAKE_HOME} \
+      && /tmp/cmake-install.sh --skip-license --prefix=${ANDROID_CMAKE_HOME} \
       && rm /tmp/cmake-install.sh
-
-ENV PATH="/usr/bin/cmake/bin:${PATH}"
+ENV PATH "${PATH}:${ANDROID_CMAKE_HOME}"
 
 CMD /opt/tools/entrypoint.sh built-in
