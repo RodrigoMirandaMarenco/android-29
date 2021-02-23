@@ -17,6 +17,7 @@ ENV PATH "${PATH}:${ANDROID_HOME}/build-tools/30.0.2"
 ENV PATH "${PATH}:${ANDROID_HOME}/platform-tools"
 ENV PATH "${PATH}:${ANDROID_HOME}/emulator"
 ENV PATH "${PATH}:${ANDROID_HOME}/bin"
+ENV PATH "${PATH}:${ANDROID_CMAKE_HOME}"
 
 RUN dpkg --add-architecture i386 && \
     apt-get update -yqq && \
