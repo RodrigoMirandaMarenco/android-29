@@ -1,9 +1,9 @@
-# Docker for Android SDK 29
+# Docker for Android SDK 29 + NDK
 
 Docker for Android SDK 29 with preinstalled build tools, emulator image and pre-installed Android NDK.
 
 > Based on [mindrunner/docker-android-sdk](https://github.com/mindrunner/docker-android-sdk)
-> And [bitrise-io/android-ndk](https://github.com/bitrise-io/android-ndk)
+> and [bitrise-io/android-ndk](https://github.com/bitrise-io/android-ndk)
 
 **Installed Packages**
 ```bash
